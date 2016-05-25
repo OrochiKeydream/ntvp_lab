@@ -1,34 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using UMovement;
 using AMovement;
+using UMovement;
 using OMovement;
+using IMovement;
 
-namespace View
+namespace MovementForm
 {
-    /// <summary>
-    /// Класс, содержащий форму пользовательского интерфейса.
-    /// </summary>
-    public partial class View : Form
+    public partial class MovementEnterForm : Form
     {
-        public View()
+        public MovementEnterForm()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Метод, обрабатывающий выбор равномерного движения
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void UniformMovementRadio_CheckedChanged(object sender, EventArgs e)
         {
             // Видимость текстовых полей.
             //
-            textBox1.Enabled = true;
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = true;
+            textBox2.Visible = true;
+            textBox3.Visible = false;
+            textBox4.Visible = false;
 
             // Очистка текстовых полей.
             //
@@ -36,26 +35,21 @@ namespace View
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-            textBox5.Clear();
 
             // Отображение текста.
             //
-            label1.Text = "Введите скорость (в км/ч)";
-            label5.Text = "Расстояние";
-            label1.Enabled = true;
-            label2.Enabled = false;
-            label3.Enabled = false;
-            label4.Enabled = true;
+            label2.Text = "Введите скорость (в км/ч)";
+            label3.Visible = false;
+            label4.Visible = false;
         }
 
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        private void AccelerationMovementRadio_CheckedChanged(object sender, EventArgs e)
         {
             // Видимость текстовых полей.
             //
-            textBox1.Enabled = true;
-            textBox2.Enabled = false;
-            textBox3.Enabled = false;
-            textBox4.Enabled = true;
+            textBox2.Visible = true;
+            textBox3.Visible = false;
+            textBox4.Visible = false;
 
             // Очистка текстовых полей.
             //
@@ -63,25 +57,21 @@ namespace View
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-            textBox5.Clear();
 
             // Отображение текста.
             //
-            label1.Text = "Введите ускорение (м/с^2)";
-            label5.Text = "Расстояние";
-            label2.Enabled = false;
-            label3.Enabled = false;
-            label4.Enabled = true;
+            label2.Text = "Введите ускорение (м/с^2)";
+            label3.Visible = false;
+            label4.Visible = false;
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        private void OscillatingMovementRadio_CheckedChanged(object sender, EventArgs e)
         {
             // Видимость текстовых полей.
             //
-            textBox1.Enabled = true;
-            textBox2.Enabled = true;
-            textBox3.Enabled = true;
-            textBox4.Enabled = true;
+            textBox2.Visible = true;
+            textBox3.Visible = true;
+            textBox4.Visible = true;
 
             // Очистка текстовых полей.
             //
@@ -89,43 +79,34 @@ namespace View
             textBox2.Clear();
             textBox3.Clear();
             textBox4.Clear();
-            textBox5.Clear();
 
             // Отображение текста.
             //
-            label1.Text = "Введите амплитуду";
-            label2.Text = "Введите частоту";
-            label3.Text = "Введите фазу";
-            label5.Text = "Координата Y";
-            label1.Enabled = true;
-            label2.Enabled = true;
-            label3.Enabled = true;
-            label4.Enabled = true;
+            label2.Text = "Введите амплитуду";
+            label3.Text = "Введите частоту";
+            label4.Text = "Введите фазу";
+            label3.Visible = true;
+            label4.Visible = true;
         }
 
-        /// <summary>
-        /// Метод обработки нажатия кнопки "Рассчитать".
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             // Если выбрано равномерное движение.
             //
-            if (radioButton1.Checked)
+            if (UniformMovementRadio.Checked)
             {
                 // Обработка ошибок.
                 //
-                if ((textBox1.Text == "") || (textBox4.Text == ""))
+                if ((textBox1.Text == "") || (textBox2.Text == ""))
                 {
                     MessageBox.Show("Один или оба поля пусты.", "Ошибка");
                 }
-                else if (Convert.ToDouble(textBox1.Text) <= 0)
+                else if (Convert.ToDouble(textBox2.Text) <= 0)
                 {
                     MessageBox.Show("Скорость не может иметь отрицательное" +
                                     " значение или равняться 0.", "Ошибка");
                 }
-                else if (Convert.ToInt32(textBox4.Text) <= 0)
+                else if (Convert.ToInt32(textBox1.Text) <= 0)
                 {
                     MessageBox.Show("Время не может иметь отрицательное" +
                                     " значение или равняться 0.", "Ошибка");
@@ -134,30 +115,33 @@ namespace View
                 //
                 else
                 {
+                    MainMovementForm main = this.Owner as MainMovementForm;
                     UniformMovement obj =
-                        new UniformMovement(Convert.ToDouble(textBox1.Text),
-                        Convert.ToInt32(textBox4.Text));
-                    textBox5.Text = Convert.ToString(obj.Calculation());
+                        new UniformMovement(Convert.ToDouble(textBox2.Text),
+                        Convert.ToInt32(textBox1.Text));
+                    main.MovementList.Add(obj);
+                    Close();
                 }
+
             }
             // Если выбрано равноускоренное движение.
             //
-            else if (radioButton2.Checked)
+            else if (AccelerationMovementRadio.Checked)
             {
                 // Обработка ошибок.
                 //
-                if ((textBox1.Text == "") || (textBox4.Text == ""))
+                if ((textBox1.Text == "") || (textBox2.Text == ""))
                 {
-                    MessageBox.Show("Один, два или все три поля пусты.",
+                    MessageBox.Show("Один или оба поля пусты.",
                         "Ошибка");
                 }
-                else if (Convert.ToDouble(textBox1.Text) <= 0)
+                else if (Convert.ToDouble(textBox2.Text) <= 0)
                 {
                     MessageBox.Show("Ускорение не может иметь" +
                                     " отрицательное значение или" +
                                     " равняться нулю.", "Ошибка");
                 }
-                else if (Convert.ToInt32(textBox4.Text) <= 0)
+                else if (Convert.ToInt32(textBox1.Text) <= 0)
                 {
                     MessageBox.Show("Время не может иметь" +
                                     " отрицательное значение" +
@@ -167,15 +151,17 @@ namespace View
                 //
                 else
                 {
+                    MainMovementForm main = this.Owner as MainMovementForm;
                     AccelerationMovement obj = new AccelerationMovement(
-                        Convert.ToDouble(textBox1.Text),
-                        Convert.ToInt32(textBox4.Text));
-                    textBox5.Text = Convert.ToString(obj.Calculation());
+                        Convert.ToDouble(textBox2.Text),
+                        Convert.ToInt32(textBox1.Text));
+                    main.MovementList.Add(obj);
+                    Close();
                 }
             }
             // Если выбрано колебательное движение.
             //
-            else if (radioButton3.Checked)
+            else if (OscillatingMovementRadio.Checked)
             {
                 // Обработка ошибок.
                 if ((textBox1.Text == "") || (textBox2.Text == "")
@@ -184,7 +170,7 @@ namespace View
                     MessageBox.Show("Все поля обязательны для заполнения.",
                         "Ошибка");
                 }
-                else if (Convert.ToInt32(textBox4.Text) <= 0)
+                else if (Convert.ToInt32(textBox1.Text) <= 0)
                 {
                     MessageBox.Show("Время не может иметь отрицательное" +
                                     " значение или равняться 0.", "Ошибка");
@@ -193,14 +179,16 @@ namespace View
                 //
                 else
                 {
+                    MainMovementForm main = this.Owner as MainMovementForm;
                     OscillatingMovement obj = new OscillatingMovement(
-                        Convert.ToDouble(textBox1.Text),
                         Convert.ToDouble(textBox2.Text),
                         Convert.ToDouble(textBox3.Text),
-                        Convert.ToInt32(textBox4.Text));
-                    textBox5.Text = Convert.ToString(obj.Calculation());
+                        Convert.ToDouble(textBox4.Text),
+                        Convert.ToInt32(textBox1.Text));
+                    main.MovementList.Add(obj);
+                    Close();
                 }
-            }     
+            }
         }
     }
 }

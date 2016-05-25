@@ -32,18 +32,18 @@ namespace UMovement
         /// <param name="inputTime">Входное время</param>
         public UniformMovement(double inputSpeed, double inputTime)
         {
-            if (inputSpeed < 0)
+            if (inputSpeed < 0.0)
             {
                 throw new ArgumentException("Скорость не может быть меньше" +
                                             " 0.");
             }
-            if (inputTime < 0)
+            if (inputTime < 0.0)
             {
                 throw new ArgumentException("Время не может быть меньше 0.");
             }
             _speed = inputSpeed;
-            _length = 0;
-            _startLength = _speed * 1000 / 3600;
+            _length = 0.0;
+            _startLength = _speed * 1000.0 / 3600.0;
             _time = inputTime;
         }
 

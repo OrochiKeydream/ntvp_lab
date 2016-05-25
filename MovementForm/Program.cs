@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace View
+namespace MovementForm
 {
     static class Program
     {
@@ -13,7 +13,7 @@ namespace View
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View());
+            Application.Run(new MainMovementForm());
         }
     }
 }
