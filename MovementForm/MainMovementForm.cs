@@ -8,6 +8,10 @@ using OMovement;
 
 namespace MovementForm
 {
+    /// <summary>
+    /// Класс, отображающий форму для отображения, добавления и удаления
+    /// записей о расчете движения.
+    /// </summary>
     public partial class MainMovementForm : Form
     {
         public List<InterfaceMovement> MovementList = new List<InterfaceMovement>(); 
@@ -17,6 +21,12 @@ namespace MovementForm
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Метод, обрабатывающий события нажатия на кнопку "Добавить
+        /// запись".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddObject_Click(object sender, EventArgs e)
         {
             MovementEnterForm addForm = new MovementEnterForm();
@@ -24,11 +34,19 @@ namespace MovementForm
             addForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Метод, обрабатывающий событие, возникающее при фокусе формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MainMovementForm_Activated(object sender, EventArgs e)
         {
             UpdateDataGridView();
         }
 
+        /// <summary>
+        /// Метод, обновляющий данные в форме.
+        /// </summary>
         private void UpdateDataGridView()
         {
             movementDataGrid.Rows.Clear();
@@ -53,6 +71,11 @@ namespace MovementForm
             }
         }
 
+        /// <summary>
+        /// Метод, обрабатывающий событие нажатия кнопки "Удалить запись".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RemoveObject_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in movementDataGrid.SelectedRows)

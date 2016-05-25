@@ -90,7 +90,7 @@
             this.Controls.Add(this.AddObject);
             this.Controls.Add(this.movementDataGrid);
             this.Name = "MainMovementForm";
-            this.Text = "MainMovementForm";
+            this.Text = "Расчет движения";
             this.Activated += new System.EventHandler(this.MainMovementForm_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.movementDataGrid)).EndInit();
             this.ResumeLayout(false);

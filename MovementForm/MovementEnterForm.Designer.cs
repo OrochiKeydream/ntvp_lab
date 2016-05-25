@@ -199,7 +199,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Name = "MovementEnterForm";
-            this.Text = "MovementEnterForm";
+            this.Text = "Ввод данных";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

@@ -6,6 +6,9 @@ using OMovement;
 
 namespace MovementForm
 {
+    /// <summary>
+    /// Класс, отображающий форму для ввода пользователем данных.
+    /// </summary>
     public partial class MovementEnterForm : Form
     {
         public MovementEnterForm()
@@ -13,7 +16,13 @@ namespace MovementForm
             InitializeComponent();
         }
 
-        private void UniformMovementRadio_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод, обрабатывающий событие выбора равномерного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UniformMovementRadio_CheckedChanged(object sender,
+            EventArgs e)
         {
             // Видимость текстовых полей.
             //
@@ -35,7 +44,13 @@ namespace MovementForm
             label4.Visible = false;
         }
 
-        private void AccelerationMovementRadio_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод, обрабатывающий событие выбора равноускоренного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AccelerationMovementRadio_CheckedChanged(object sender,
+            EventArgs e)
         {
             // Видимость текстовых полей.
             //
@@ -57,7 +72,13 @@ namespace MovementForm
             label4.Visible = false;
         }
 
-        private void OscillatingMovementRadio_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Метод, обрабатывающий событие выбора колебательного движения.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OscillatingMovementRadio_CheckedChanged(object sender,
+            EventArgs e)
         {
             // Видимость текстовых полей.
             //
@@ -81,6 +102,11 @@ namespace MovementForm
             label4.Visible = true;
         }
 
+        /// <summary>
+        /// Метод, обрабатывающий нажатие кнопки "Рассчитать".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             // Если выбрано равномерное движение.
@@ -156,6 +182,7 @@ namespace MovementForm
             else if (OscillatingMovementRadio.Checked)
             {
                 // Обработка ошибок.
+                //
                 if ((textBox1.Text == "") || (textBox2.Text == "")
                     || (textBox3.Text == "") || (textBox4.Text == ""))
                 {
@@ -183,6 +210,11 @@ namespace MovementForm
             }
         }
 
+        /// <summary>
+        /// Метод, обрабатывающий нажатие на кнопку "Отмена".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             Close();
