@@ -25,6 +25,11 @@ namespace UMovement
             get { return _time; }
         }
 
+        public double Length
+        {
+            get { return _length; }
+        }
+
         /// <summary>
         /// Конструктор класса.
         /// </summary>
@@ -59,6 +64,7 @@ namespace UMovement
             {
                 _length += _startLength;
             }
+            _length = Math.Round(_length, 2);
             return _length;
         }
     }

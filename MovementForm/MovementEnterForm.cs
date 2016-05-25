@@ -217,7 +217,7 @@ namespace MovementForm
         /// <param name="e"></param>
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            Close();
+
         }
     }
 }

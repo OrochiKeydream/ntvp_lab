@@ -37,6 +37,11 @@ namespace OMovement
             get { return _time; }
         }
 
+        public double FuncValue
+        {
+            get { return _yCord; }
+        }
+
         /// <summary>
         /// Конструктор класса.
         /// </summary>

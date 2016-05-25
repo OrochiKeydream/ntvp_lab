@@ -26,6 +26,11 @@ namespace AMovement
             get { return _time; }
         }
 
+        public double Length
+        {
+            get { return _length; }
+        }
+
         /// <summary>
         /// Конструктор класса.
         /// </summary>
@@ -57,6 +62,7 @@ namespace AMovement
         public double Calculation()
         {
             _length = (_accel * Math.Pow(_time, 2) / 2);
+            _length = Math.Round(_length);
             return _length;
         }
     }

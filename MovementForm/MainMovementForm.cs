@@ -14,7 +14,7 @@ namespace MovementForm
     /// </summary>
     public partial class MainMovementForm : Form
     {
-        public List<InterfaceMovement> MovementList = new List<InterfaceMovement>(); 
+        public List<InterfaceMovement> MovementList = new List<InterfaceMovement>();
 
         public MainMovementForm()
         {
@@ -66,7 +66,7 @@ namespace MovementForm
                 {
                     row.Cells[0].Value = "Колебательное";
                 }
-                row.Cells[1].Value = Math.Round(MovementList[i].Calculation(), 2);
+                row.Cells[1].Value = MovementList[i].Calculation();
                 movementDataGrid.Rows.Add(row);
             }
         }
@@ -83,6 +83,31 @@ namespace MovementForm
                 MovementList.RemoveAt(row.Index);
             }
             UpdateDataGridView();
+        }
+
+        private void buttonShow_Click(object sender, EventArgs e)
+        {
+            objectControl.Visible = true;
+        }
+
+        private void movementDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int i = movementDataGrid.CurrentRow.Index;
+            if (MovementList[i] is UniformMovement)
+            {
+                UniformMovement obj = (UniformMovement) MovementList[i];
+                objectControl.SetValue(obj);
+            }
+            else if (MovementList[i] is AccelerationMovement)
+            {
+                AccelerationMovement obj = (AccelerationMovement) MovementList[i];
+                objectControl.SetValue(obj);
+            }
+            else if (MovementList[i] is OscillatingMovement)
+            {
+                OscillatingMovement obj = (OscillatingMovement) MovementList[i];
+                objectControl.SetValue(obj);
+            }
         }
     }
 }
