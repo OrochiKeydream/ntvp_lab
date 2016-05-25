@@ -1,0 +1,16 @@
+.vs/
+AccelerationMovement/bin
+AccelerationMovement/obj
+ConsoleLoader/bin
+ConsoleLoader/obj
+Model/bin
+Model/obj
+OscillatingMovement/bin
+OscillatingMovement/obj
+packages/
+UniformMovement/bin
+UniformMovement/obj
+UnitTests/bin
+UnitTests/obj
+View/bin
+View/obj
