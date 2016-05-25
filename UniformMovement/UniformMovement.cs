@@ -54,6 +54,7 @@ namespace UMovement
         /// <returns>Выходное значение расстояния.</returns>
         public double Calculation()
         {
+            _length = 0;
             for(int i = 0; i < _time; i++)
             {
                 _length += _startLength;
