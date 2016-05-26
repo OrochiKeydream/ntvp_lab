@@ -49,11 +49,11 @@ namespace MovementForm
         /// </summary>
         private void UpdateDataGridView()
         {
-            movementDataGrid.Rows.Clear();
+            MovementDataGrid.Rows.Clear();
             for (int i = 0; i < MovementList.Count; i++)
             {
                 DataGridViewRow row = new DataGridViewRow();
-                row.CreateCells(movementDataGrid);
+                row.CreateCells(MovementDataGrid);
                 if (MovementList[i] is UniformMovement)
                 {
                     row.Cells[0].Value = "Равномерное";
@@ -67,7 +67,7 @@ namespace MovementForm
                     row.Cells[0].Value = "Колебательное";
                 }
                 row.Cells[1].Value = MovementList[i].Calculation();
-                movementDataGrid.Rows.Add(row);
+                MovementDataGrid.Rows.Add(row);
             }
         }
 
@@ -78,21 +78,21 @@ namespace MovementForm
         /// <param name="e"></param>
         private void RemoveObject_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in movementDataGrid.SelectedRows)
+            foreach (DataGridViewRow row in MovementDataGrid.SelectedRows)
             {
                 MovementList.RemoveAt(row.Index);
             }
             UpdateDataGridView();
         }
 
-        private void buttonShow_Click(object sender, EventArgs e)
+        private void ShowButton_Click(object sender, EventArgs e)
         {
             objectControl.Visible = true;
         }
 
-        private void movementDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void MovementDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int i = movementDataGrid.CurrentRow.Index;
+            int i = MovementDataGrid.CurrentRow.Index;
             if (MovementList[i] is UniformMovement)
             {
                 UniformMovement obj = (UniformMovement) MovementList[i];

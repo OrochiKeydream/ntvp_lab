@@ -13,7 +13,6 @@ namespace UMovement
         /// </summary>
         private double _speed;
         private double _length;
-        private double _startLength;
         private double _time;
 
         public double Speed
@@ -48,7 +47,6 @@ namespace UMovement
             }
             _speed = inputSpeed;
             _length = 0.0;
-            _startLength = _speed * 1000.0 / 3600.0;
             _time = inputTime;
         }
 
@@ -59,10 +57,11 @@ namespace UMovement
         /// <returns>Выходное значение расстояния.</returns>
         public double Calculation()
         {
-            _length = 0;
-            for(int i = 0; i < _time; i++)
+            _length = 0.0;
+            double startLength = _speed * 1000.0 / 3600.0;
+            for (int i = 0; i < _time; i++)
             {
-                _length += _startLength;
+                _length += startLength;
             }
             _length = Math.Round(_length, 2);
             return _length;

@@ -28,29 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.movementDataGrid = new System.Windows.Forms.DataGridView();
+            this.MovementDataGrid = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddObject = new System.Windows.Forms.Button();
             this.RemoveObject = new System.Windows.Forms.Button();
-            this.buttonShow = new System.Windows.Forms.Button();
+            this.ShowButton = new System.Windows.Forms.Button();
             this.objectControl = new MovementForm.ObjectControl();
-            ((System.ComponentModel.ISupportInitialize)(this.movementDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MovementDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // movementDataGrid
+            // MovementDataGrid
             // 
-            this.movementDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.movementDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MovementDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MovementDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            this.movementDataGrid.Location = new System.Drawing.Point(12, 12);
-            this.movementDataGrid.Name = "movementDataGrid";
-            this.movementDataGrid.ReadOnly = true;
-            this.movementDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.movementDataGrid.Size = new System.Drawing.Size(243, 192);
-            this.movementDataGrid.TabIndex = 0;
-            this.movementDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.movementDataGrid_CellClick);
+            this.MovementDataGrid.Location = new System.Drawing.Point(16, 15);
+            this.MovementDataGrid.Margin = new System.Windows.Forms.Padding(4);
+            this.MovementDataGrid.Name = "MovementDataGrid";
+            this.MovementDataGrid.ReadOnly = true;
+            this.MovementDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MovementDataGrid.Size = new System.Drawing.Size(324, 236);
+            this.MovementDataGrid.TabIndex = 0;
+            this.MovementDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(MovementDataGrid_CellClick);
             // 
             // Column1
             // 
@@ -66,9 +67,10 @@
             // 
             // AddObject
             // 
-            this.AddObject.Location = new System.Drawing.Point(261, 12);
+            this.AddObject.Location = new System.Drawing.Point(348, 15);
+            this.AddObject.Margin = new System.Windows.Forms.Padding(4);
             this.AddObject.Name = "AddObject";
-            this.AddObject.Size = new System.Drawing.Size(128, 23);
+            this.AddObject.Size = new System.Drawing.Size(171, 28);
             this.AddObject.TabIndex = 1;
             this.AddObject.Text = "Добавить запись";
             this.AddObject.UseVisualStyleBackColor = true;
@@ -76,58 +78,63 @@
             // 
             // RemoveObject
             // 
-            this.RemoveObject.Location = new System.Drawing.Point(261, 41);
+            this.RemoveObject.Location = new System.Drawing.Point(348, 50);
+            this.RemoveObject.Margin = new System.Windows.Forms.Padding(4);
             this.RemoveObject.Name = "RemoveObject";
-            this.RemoveObject.Size = new System.Drawing.Size(128, 23);
+            this.RemoveObject.Size = new System.Drawing.Size(171, 28);
             this.RemoveObject.TabIndex = 2;
             this.RemoveObject.Text = "Удалить запись";
             this.RemoveObject.UseVisualStyleBackColor = true;
             this.RemoveObject.Click += new System.EventHandler(this.RemoveObject_Click);
             // 
-            // buttonShow
+            // ShowButton
             // 
-            this.buttonShow.Location = new System.Drawing.Point(261, 181);
-            this.buttonShow.Name = "buttonShow";
-            this.buttonShow.Size = new System.Drawing.Size(122, 23);
-            this.buttonShow.TabIndex = 3;
-            this.buttonShow.Text = "Дополнительно";
-            this.buttonShow.UseVisualStyleBackColor = true;
-            this.buttonShow.Click += new System.EventHandler(this.buttonShow_Click);
+            this.ShowButton.Location = new System.Drawing.Point(348, 223);
+            this.ShowButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ShowButton.Name = "ShowButton";
+            this.ShowButton.Size = new System.Drawing.Size(163, 28);
+            this.ShowButton.TabIndex = 3;
+            this.ShowButton.Text = "Дополнительно";
+            this.ShowButton.UseVisualStyleBackColor = true;
+            this.ShowButton.Click += new System.EventHandler(this.ShowButton_Click);
             // 
             // objectControl
             // 
-            this.objectControl.Location = new System.Drawing.Point(77, 8);
+            this.objectControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.objectControl.Location = new System.Drawing.Point(103, 10);
+            this.objectControl.Margin = new System.Windows.Forms.Padding(5);
             this.objectControl.Name = "objectControl";
-            this.objectControl.Size = new System.Drawing.Size(241, 191);
+            this.objectControl.Size = new System.Drawing.Size(321, 235);
             this.objectControl.TabIndex = 4;
             this.objectControl.Visible = false;
             // 
             // MainMovementForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 211);
+            this.ClientSize = new System.Drawing.Size(527, 260);
             this.Controls.Add(this.objectControl);
-            this.Controls.Add(this.buttonShow);
+            this.Controls.Add(this.ShowButton);
             this.Controls.Add(this.RemoveObject);
             this.Controls.Add(this.AddObject);
-            this.Controls.Add(this.movementDataGrid);
+            this.Controls.Add(this.MovementDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMovementForm";
             this.Text = "Расчет движения";
             this.Activated += new System.EventHandler(this.MainMovementForm_Activated);
-            ((System.ComponentModel.ISupportInitialize)(this.movementDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MovementDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView movementDataGrid;
+        private System.Windows.Forms.DataGridView MovementDataGrid;
         private System.Windows.Forms.Button AddObject;
         private System.Windows.Forms.Button RemoveObject;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.Button buttonShow;
+        private System.Windows.Forms.Button ShowButton;
         private ObjectControl objectControl;
     }
 }

@@ -107,7 +107,7 @@ namespace MovementForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        private void CalcButton_Click(object sender, EventArgs e)
         {
             // Если выбрано равномерное движение.
             //
@@ -119,15 +119,15 @@ namespace MovementForm
                 {
                     MessageBox.Show("Один или оба поля пусты.", "Ошибка");
                 }
-                else if (Convert.ToDouble(textBox2.Text) <= 0)
+                else if (Convert.ToDouble(textBox2.Text) < 0)
                 {
                     MessageBox.Show("Скорость не может иметь отрицательное" +
-                                    " значение или равняться 0.", "Ошибка");
+                                    " значение.", "Ошибка");
                 }
-                else if (Convert.ToInt32(textBox1.Text) <= 0)
+                else if (Convert.ToInt32(textBox1.Text) < 0)
                 {
                     MessageBox.Show("Время не может иметь отрицательное" +
-                                    " значение или равняться 0.", "Ошибка");
+                                    " значение.", "Ошибка");
                 }
                 // Реализация расчета.
                 //
@@ -153,17 +153,17 @@ namespace MovementForm
                     MessageBox.Show("Один или оба поля пусты.",
                         "Ошибка");
                 }
-                else if (Convert.ToDouble(textBox2.Text) <= 0)
+                else if (Convert.ToDouble(textBox2.Text) < 0)
                 {
                     MessageBox.Show("Ускорение не может иметь" +
-                                    " отрицательное значение или" +
-                                    " равняться нулю.", "Ошибка");
+                                    " отрицательное значение.",
+                                    "Ошибка");
                 }
-                else if (Convert.ToInt32(textBox1.Text) <= 0)
+                else if (Convert.ToInt32(textBox1.Text) < 0)
                 {
                     MessageBox.Show("Время не может иметь" +
-                                    " отрицательное значение" +
-                                    " или равняться 0.", "Ошибка");
+                                    " отрицательное значение.",
+                                    "Ошибка");
                 }
                 // Реализация расчета.
                 //
@@ -192,7 +192,7 @@ namespace MovementForm
                 else if (Convert.ToInt32(textBox1.Text) <= 0)
                 {
                     MessageBox.Show("Время не может иметь отрицательное" +
-                                    " значение или равняться 0.", "Ошибка");
+                                    " значение.", "Ошибка");
                 }
                 // Реализация расчета.
                 //
@@ -215,9 +215,9 @@ namespace MovementForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonCancel_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
     }
 }

@@ -80,6 +80,7 @@ namespace OMovement
         public double Calculation()
         {
             _yCord = _amplitude * Math.Cos((_frequency * _time) + _phase);
+            _yCord = Math.Round(_yCord, 2);
             return _yCord;
         }
     }

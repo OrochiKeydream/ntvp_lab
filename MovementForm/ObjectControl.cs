@@ -85,7 +85,7 @@ namespace MovementForm
             textBox5.Visible = true;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Visible = false;
         }
